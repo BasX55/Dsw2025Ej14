@@ -1,28 +1,33 @@
 ﻿using System;
+using System.Text.Json;
 
 public class PersistenciaEnMemoria : IPersistencia
 {
-	public PersistenciaEnMemoria()
-	{
-		LoadProducts();
-		
-	}
-    private List<Product> _products = [];
-
-    public Product GetProduct(string sku) 
+    private List<Product> _products;
+    public PersistenciaEnMemoria()
     {
-        _products.FirstOrDefault(p => p.Sku == sku);   
+        LoadProducts();
+
+    }
     
+
+    public Product GetProduct(string sku)
+    {
+        return _products.FirstOrDefault(p => p.Sku == sku);
+
     }
     public IEnumerable<Product> GetProducts()
     {
-        return _products.Where(p => p.IsActive);
+        return _products.Where(p => p.IsActive).ToList();
     }
-    
-    private void LoadProducts()
+
+    private List<Product> LoadProducts()
     {
-        var json = File.ReadAllText("Data:\\products.json");
-        var _products = JsonSerializer.Deserialize<List<Product>>(json);
+        var json = File.ReadAllText("C:\\Users\\moran\\OneDrive\\Desktop\\DSW2025\\Dsw2025Ej14\\Dsw2025Ej14\\Dsw2025Ej14.Api\\products.json");
+        return _products = JsonSerializer.Deserialize<List<Product>>(json, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        });
 
     }
 }

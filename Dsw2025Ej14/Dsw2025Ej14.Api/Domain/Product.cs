@@ -2,12 +2,13 @@
 
 public class Product
 {
-	public Product()
-	{
-        string Sku;
-        string Name;
-        decimal CurrentUnitPrice;
-        bool IsActive;
+    public string Sku { get; set; }
+    public string Name { get; set; }
+    public decimal CurrentUnitPrice { get; set; }
+    public bool IsActive { get; set; }
+    public Product()
+    {
+        
 
     }
 }
