@@ -1,4 +1,4 @@
-@Dsw2025Ej14.Api_HostAddress = http://localhost:5185
+@Dsw2025Ej14.Api_HostAddress = http://localhost:5183
 
 GET {{Dsw2025Ej14.Api_HostAddress}}/weatherforecast/
 Accept: application/json

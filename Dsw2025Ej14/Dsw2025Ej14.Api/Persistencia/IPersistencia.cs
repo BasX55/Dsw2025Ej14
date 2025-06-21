@@ -1,9 +1,8 @@
 ﻿using System;
+using System.Text.Json;
 
-public class IPersistencia
+public interface IPersistencia
 {
-	public interface IPersistencia()
-	{
-
-	}
+    public Product GetProduct(string sku);
+    public IEnumerable<Product> GetProducts();
 }
